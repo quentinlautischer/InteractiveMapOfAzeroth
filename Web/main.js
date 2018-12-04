@@ -11,14 +11,22 @@ var audioLib = {
 
 $('#img').mapster({
 mapKey: 'zone',
-fillColor: 'ffffff',
-fillOpacity: 0.3,
+fade: false,
 singleSelect: true,
+render_select: {
+    fade: false,
+    altImage: '../Maps/OutlandDetailed.jpg'
+},
+render_highlight: {
+    fade: false,
+    altImage: '../Maps/OutlandDetailed.jpg'
+},
+
 onClick: function (data) {
   console.log("Clicked " + data.key);
   for(var audio in audioLib){
     audioLib[audio].pause();
-    audioLib[audio].fastSeek(0);
+    audioLib[audio].load();
   }
   audioLib[data.key].play();
   }
